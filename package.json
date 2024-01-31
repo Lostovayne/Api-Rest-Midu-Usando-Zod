@@ -1,0 +1,15 @@
+{
+    "name": "api-rest-midu",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "dev": "node --watch app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "4.18.2",
+        "zod": "3.22.4"
+    }
+}
