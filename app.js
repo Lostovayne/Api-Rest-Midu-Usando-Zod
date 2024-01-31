@@ -1,29 +1,31 @@
 const express = require("express");
 const movies = require("./movies.json");
 const crypto = require("crypto");
+const cors = require("cors");
 const { validateMovie, validatePartialMovie } = require("./schema/movies");
 const app = express();
 
 app.disable("x-powered-by");
 app.use(express.json());
+app.use(cors());
 app.get("/", (req, res) => res.json({ message: "Hello World!" }));
 
 // Listado de Direcciones de acceso permitidas para los CORS
-const ACCEPTED_ORIGINS = [
-    "https://api-movies-midu.vercel.app",
-    "http://localhost:3000",
-    "http://localhost:1234",
-    "http://localhost:1235",
-    "http://localhost:1236",
-];
+// const ACCEPTED_ORIGINS = [
+//     "https://api-movies-midu.vercel.app",
+//     "http://localhost:3000",
+//     "http://localhost:1234",
+//     "http://localhost:1235",
+//     "http://localhost:1236",
+// ];
 
 app.get("/movies", (req, res) => {
     const { genre } = req.query;
-    const origin = req.headers("origin"); // => CORS
-    if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
-        res.header("Access-Control-Allow-Origin", origin);
-        res.header("Access-Control-Allow-Credentials", true);
-    }
+    // const origin = req.headers("origin"); // => CORS
+    // if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
+    //     res.header("Access-Control-Allow-Origin", origin);
+    //     res.header("Access-Control-Allow-Credentials", true);
+    // }
 
     if (genre) {
         const filteredMovies = movies.filter((movie) =>
@@ -44,8 +46,7 @@ app.get("/movies/:id", (req, res) => {
 app.post("/movies", (req, res) => {
     const result = validateMovie(req.body); // => Validaciones de las propiedades
     if (result.error) return res.status(400).json(result.error.issues);
-    // en base de datos
-    const newMovie = { id: crypto.randomUUID(), ...result.data };
+    const newMovie = { id: crypto.randomUUID(), ...result.data }; // =>  Agregar en la BD
     movies.push(newMovie);
     res.status(201).json(newMovie); // => Actualiar la cache del cliente
 });
