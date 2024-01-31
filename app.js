@@ -9,7 +9,6 @@ app.use(express.json());
 app.get("/", (req, res) => res.json({ message: "Hello World!" }));
 
 // Listado de Direcciones de acceso permitidas para los CORS
-
 const ACCEPTED_ORIGINS = [
     "https://api-movies-midu.vercel.app",
     "http://localhost:3000",
@@ -20,9 +19,7 @@ const ACCEPTED_ORIGINS = [
 
 app.get("/movies", (req, res) => {
     const { genre } = req.query;
-
-    // USANDO CORS
-    const origin = req.headers("origin");
+    const origin = req.headers("origin"); // => CORS
     if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
         res.header("Access-Control-Allow-Origin", origin);
         res.header("Access-Control-Allow-Credentials", true);
