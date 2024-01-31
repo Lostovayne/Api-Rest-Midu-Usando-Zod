@@ -10,6 +10,16 @@ Para ejecutar este proyecto, asegúrate de tener Node.js instalado. Luego, puede
 2. Abre una terminal en el directorio del proyecto y ejecuta el comando `npm install` para instalar las dependencias del proyecto.
 3. Una vez instaladas las dependencias, puedes ejecutar el servidor con el comando `npm run dev`.
 
+
+## Uso de Linter Standard
+
+- Instalacion de Linter Standard: `npm install standard -D`
+- Configuracion de Linter Standard: `standard --fix`
+- Agregar el comando `"dev": "standard --fix && node --watch app.js"`
+- Ejecutar el servidor: `npm run dev`
+
+
+
 ## Uso
 
 Una vez que el servidor esté en ejecución, puedes realizar las siguientes operaciones:
