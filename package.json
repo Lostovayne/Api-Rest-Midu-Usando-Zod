@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "dev": "node --watch server-with-mysql.js",
-        "start": "node app.js"
+        "start": "node server-with-mysql.js"
     },
     "author": "",
     "license": "ISC",
