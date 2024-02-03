@@ -5,7 +5,7 @@
     "main": "app.js",
     "type": "module",
     "scripts": {
-        "dev": "standard --fix && node --watch app.js",
+        "dev": "node --watch server-with-mysql.js",
         "start": "node app.js"
     },
     "author": "",
@@ -13,6 +13,7 @@
     "dependencies": {
         "cors": "^2.8.5",
         "express": "4.18.2",
+        "mysql2": "^3.9.1",
         "zod": "3.22.4"
     },
     "devDependencies": {

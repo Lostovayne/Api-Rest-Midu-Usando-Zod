@@ -1,12 +1,13 @@
+-- Active: 1706929329353@@127.0.0.1@3306
 
 ### Recuperar todas las peliculas
 GET http://localhost:1234/movies
 
 ### Recuperar peliculas por el Genero
-GET http://localhost:1234/movies?genre=Action
+GET http://localhost:1234/movies?genre=Drama
 
 ### Recuperar pelicula por el id
-GET http://localhost:1234/movies/5ad1a235-0d9c-410a-b32b-220d91689a08
+GET http://localhost:1234/movies/304dd306-c2c4-11ee-9029-0242ac120002
 
 ### Crear una pelicula
 POST http://localhost:1234/movies
@@ -23,14 +24,14 @@ Content-Type: application/json
 
 ### Actualizar solo una parte de la pelicula
 
-PATCH http://localhost:1234/movies/5ad1a235-0d9c-410a-b32b-220d91689a08
+PATCH http://localhost:1234/movies/550ea104-c265-11ee-b14b-0242ac120002
 Content-Type: application/json
 
 {
-    "year": 1965,
+    "year": 1961,
     "duration":170
 }
 
 
 ### peticion de tipo Delete
-DELETE http://localhost:1234/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+DELETE http://localhost:1234/movies/702295eb-c2c4-11ee-9029-0242ac120002
