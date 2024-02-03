@@ -1,4 +1,4 @@
--- Active: 1706929329353@@127.0.0.1@3306@moviedb
+-- Active: 1707001425185@@viaduct.proxy.rlwy.net@22734@railway
 DROP DATABASE IF EXISTS moviedb;
 
 CREATE DATABASE moviedb;
