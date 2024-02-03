@@ -34,4 +34,4 @@ Content-Type: application/json
 
 
 ### peticion de tipo Delete
-DELETE http://localhost:1234/movies/702295eb-c2c4-11ee-9029-0242ac120002
+DELETE http://localhost:1234/movies/735e1bdc-c2de-11ee-9029-0242ac120002

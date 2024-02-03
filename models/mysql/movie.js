@@ -1,15 +1,16 @@
+import { config } from "dotenv";
 import mysql from "mysql2/promise";
+config();
 
-const config = {
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "moviedb",
-    port: 3306,
+const configDb = {
+    host: process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASSWORD || "root",
+    database: process.env.MYSQL_DATABASE || "moviedb",
+    port: process.env.MYSQL_PORT || 3306,
 };
 
-const connection = await mysql.createConnection(config);
-// console.log("Conectado", connection);
+const connection = await mysql.createConnection(configDb);
 
 export class MovieModel {
     static async getAll({ genre }) {
@@ -72,8 +73,11 @@ export class MovieModel {
     }
 
     static async delete({ id }) {
-        const movieDelete = await connection.query("DELETE FROM movie WHERE BIN_TO_UUID(id) = ?", [id]);
-        return movieDelete;
+        const [results] = await connection.query("DELETE FROM movie WHERE BIN_TO_UUID(id) = ?", [id]);
+        if (results.affectedRows === 0) {
+            return null;
+        }
+        return results;
     }
 
     static async update({ id, input }) {
